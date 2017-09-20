@@ -8,7 +8,7 @@
     "test": "node test"
   },
   "author": {
-    "name": "Alena Silka <Alena_Silka@epam.com>"
+    "name": "Alena <Alena_Silka@epam.com>"
   },
   "license": "ISC",
   "dependencies": {

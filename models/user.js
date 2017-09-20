@@ -1,16 +1,16 @@
 'use strict';
 
 class User {
-	constructor (name) {
+	constructor(name) {
 		this.name = name;
 	}
 
-	greetings () {
-		console.log('My name is', this.name );
+	greetings() {
+		console.log('My name is', this.name);
 	}
 }
 
 exports.User = User;
 
-//log user module
-console.log(module);
+//log user module in this way?
+//console.log(module);
