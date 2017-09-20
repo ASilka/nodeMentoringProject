@@ -1,0 +1,22 @@
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "description": "this is a test project created for mentoring program",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test"
+  },
+  "author": {
+    "name": "Alena Silka <Alena_Silka@epam.com>"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0"
+  },
+  "devDependencies": {},
+  "engines": {}
+}
