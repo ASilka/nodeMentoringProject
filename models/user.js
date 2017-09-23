@@ -1,6 +1,4 @@
-'use strict';
-
-class User {
+export class User {
 	constructor(name) {
 		this.name = name;
 	}
@@ -9,8 +7,3 @@ class User {
 		console.log('My name is', this.name);
 	}
 }
-
-exports.User = User;
-
-//log user module in this way?
-//console.log(module);

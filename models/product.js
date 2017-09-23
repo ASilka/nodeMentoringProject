@@ -1,6 +1,4 @@
-'use strict';
-
-class Product {
+export class Product {
 	constructor(brand) {
 		this.brand = brand;
 	}
@@ -9,8 +7,3 @@ class Product {
 		console.log('That is just', this.brand);
 	}
 }
-
-exports.Product = Product;
-
-//log product module in this way?
-//console.log(module);

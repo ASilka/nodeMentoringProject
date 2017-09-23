@@ -1,13 +1,14 @@
-'use strict';
+import { User, Product } from './models';
 
-//task - one import for all created models
-const models = require('./models')
+const userName = new User('Alena');
+const productBrand = new Product('Test project');
 
-//task - import config module
-const config = require('./config/config');
+import * as config from './config/config';
 
-//task - log app name to console
+//log app name to console
 console.log('Hello! This is my first test application known as', config.appName);
 
-models.userName.greetings();
-models.productBrand.productChoice();
+userName.greetings();
+productBrand.productChoice();
+
+
