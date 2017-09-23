@@ -4,8 +4,8 @@
   "description": "this is a test project created for mentoring program",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "startEs6": "node -r babel-register index.js",
+    "start": "nodemon index.js",
+    "startEs6": "nodemon -r babel-register index.js",
     "test": "node test"
   },
   "author": {
@@ -20,7 +20,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "nodemon": "^1.12.1"
   },
   "engines": {}
 }
