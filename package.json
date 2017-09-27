@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon index.js",
     "startEs6": "nodemon -r babel-register index.js",
-    "test": "node test"
+    "testDirwatcher": "nodemon -r babel-register ./models/dirwatcher.js",
+    "testDirwatcherWatchFile": "nodemon -r babel-register ./models/dirwatcherWatchFile.js",
+    "testImport": "nodemon -r babel-register ./models/importer.js"
   },
   "author": {
     "name": "Alena Silka <Alena_Silka@epam.com>"
@@ -16,7 +18,8 @@
     "babel": "^6.23.0",
     "babel-preset-node6": "^11.0.0",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "csvtojson": "^1.1.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
