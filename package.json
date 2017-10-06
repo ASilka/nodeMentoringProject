@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "startEs6": "node -r babel-register index.js",
+    "startStreamsExample":"node -r babel-register ./utils/streams.js --action=io --file=./data/test-data-example.csv",
     "test": "node test"
   },
   "author": {
@@ -16,7 +17,10 @@
     "babel": "^6.23.0",
     "babel-preset-node6": "^11.0.0",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "split2": "^2.2.0",
+    "through2": "^2.0.3",
+    "yargs": "^9.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
