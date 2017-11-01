@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "Product": "Juice",
+        "Year": "1997",
+        "Owner": "John",
+        "Reviews": "very good"
+    },
+    {
+        "id": "2",
+        "Product": "Meat",
+        "Year": "2000",
+        "Owner": "Mary",
+        "Reviews": "not good"
+    },
+    {
+        "id": "3",
+        "Product": "Bananas",
+        "Year": "1987",
+        "Owner": "Kate",
+        "Reviews": "not bad"
+    },
+    {
+        "id": "4",
+        "Product": "Cheese",
+        "Year": "1950",
+        "Owner": "Joel",
+        "Reviews": "quite well"
+    }
+]
