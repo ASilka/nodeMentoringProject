@@ -9,7 +9,10 @@
     "testDirwatcher": "nodemon -r babel-register ./models/dirwatcher.js",
     "testDirwatcherWatchFile": "nodemon -r babel-register ./models/dirwatcherWatchFile.js",
     "testImport": "nodemon -r babel-register ./models/importer.js",
-    "testPlainServer": "nodemon -r babel-register ./http-servers/plain-text-server.js"
+    "testPlainServer": "nodemon -r babel-register ./http-servers/plain-text-server.js",
+    "testJsonServer": "nodemon -r babel-register ./http-servers/json-server.js",
+    "testHtmlServer": "nodemon -r babel-register ./http-servers/html-server.js",
+    "testEchoServer": "nodemon -r babel-register ./http-servers/echo-server.js"
   },
   "author": {
     "name": "Alena Silka <Alena_Silka@epam.com>"

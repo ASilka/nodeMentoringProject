@@ -5,14 +5,13 @@ const bodyParser = express.json();
 const fs = require("fs");
 const router = express.Router();
 
-app.listen(3000);
+//app.listen(3000);
 
 app.use(cookieParser());
 
 app.get('/user', function (req, res) {
     let parsedCookies = req.cookies;
     let parsedQuery = req.query;
-    //res.send(JSON.stringify(req.query) + JSON.stringify(req.cookies));
     res.json(req.query);
     //res.send('query: ' + req.query);
     console.log('Cookies: ', parsedCookies)
@@ -99,4 +98,6 @@ router.post("/api/products", bodyParser, function (req, res, next) {
     res.send(product);
 });
 
-app.use('/', router)
+app.use('/', router);
+
+module.exports = app;
