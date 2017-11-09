@@ -23,9 +23,18 @@
     "babel-preset-node6": "^11.0.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "basic-auth": "^2.0.0",
     "cookie-parser": "^1.4.3",
     "csvtojson": "^1.1.7",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
