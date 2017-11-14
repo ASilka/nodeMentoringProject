@@ -1,30 +1,30 @@
 [
     {
         "id": "1",
-        "Product": "Juice",
-        "Year": "1997",
-        "Owner": "John",
-        "Reviews": "very good"
+        "product": "Juice",
+        "year": "1997",
+        "owner": "John",
+        "reviews": "very good"
     },
     {
         "id": "2",
-        "Product": "Meat",
-        "Year": "2000",
-        "Owner": "Mary",
-        "Reviews": "not good"
+        "product": "Meat",
+        "year": "2000",
+        "owner": "Mary",
+        "reviews": "not good"
     },
     {
         "id": "3",
-        "Product": "Bananas",
-        "Year": "1987",
-        "Owner": "Kate",
-        "Reviews": "not bad"
+        "product": "Bananas",
+        "year": "1987",
+        "owner": "Kate",
+        "reviews": "not bad"
     },
     {
         "id": "4",
-        "Product": "Cheese",
-        "Year": "1950",
-        "Owner": "Joel",
-        "Reviews": "quite well"
+        "product": "Cheese",
+        "year": "1950",
+        "owner": "Joel",
+        "reviews": "quite well"
     }
 ]

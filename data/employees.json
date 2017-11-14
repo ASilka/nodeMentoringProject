@@ -6,6 +6,8 @@
         "firstName": "Glenna",
         "userName": "GG",
         "eMail": "GG@test.com",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "e0a574e1-6e87-4baf-b942-f984d9cd0635"
     },
     {
@@ -15,6 +17,8 @@
         "firstName": "Morton",
         "userName": "GM",
         "eMail": "GM@test.com",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "46ae661f-99a9-4838-82cc-d76165f00d1a"
     },
     {
@@ -24,6 +28,8 @@
         "firstName": "Ilene",
         "userName": "HI",
         "eMail": "HI@test.com",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "d879a4a3-89e5-45f0-ab68-4944fceb3d62"
     },
     {
@@ -33,6 +39,8 @@
         "firstName": "Gamble",
         "userName": "MG",
         "eMail": "MG@test.com",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "f7f2c8a3-1978-405e-97ea-1d917888685c"
     },
     {
@@ -40,6 +48,8 @@
         "title": "Senior Developer",
         "lastName": "Hopper",
         "firstName": "Lorena",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "0c65ed67-9ecf-4d1d-a221-5e1473767237"
     },
     {
@@ -47,6 +57,8 @@
         "title": "Director",
         "lastName": "Mills",
         "firstName": "Carly",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "6501ef69-4dc3-4e35-a224-e6c757d12bfc"
     },
     {
@@ -54,6 +66,8 @@
         "title": "QA",
         "lastName": "Mcbride",
         "firstName": "Ora",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "39302125-bc0e-4fae-901c-bd03f856d017"
     },
     {
@@ -68,6 +82,8 @@
         "title": "Senior Developer",
         "lastName": "Buchanan",
         "firstName": "Pansy",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "4ef4bf91-7766-445f-ac45-16c29e50a111"
     },
     {
@@ -75,6 +91,8 @@
         "title": "Senior Developer",
         "lastName": "Salazar",
         "firstName": "Ladonna",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "926d872f-8439-40d6-b5d3-6caf5a4e5754"
     },
     {
@@ -82,6 +100,8 @@
         "title": "Developer",
         "lastName": "Mcdonald",
         "firstName": "Helga",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "11c4c5f9-22ef-4fdd-99fa-354d0f14f0d4"
     },
     {
@@ -89,6 +109,8 @@
         "title": "Director",
         "lastName": "Houston",
         "firstName": "Sweet",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "dc0c8a9b-d236-4ddb-82c0-1bd2b9bc629d"
     },
     {
@@ -96,6 +118,8 @@
         "title": "Senior Developer",
         "lastName": "Hayes",
         "firstName": "Chelsea",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "4ad4d36e-d77d-4765-acc4-bd4b92dc8a0a"
     },
     {
@@ -103,6 +127,8 @@
         "title": "Senior Developer",
         "lastName": "Bass",
         "firstName": "Barr",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "c20e411d-de6c-460c-a319-ed606e1bfb95"
     },
     {
@@ -110,6 +136,8 @@
         "title": "Senior Developer",
         "lastName": "Williamson",
         "firstName": "Marsh",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "cdb24955-4de2-4ae2-9419-2dd509027de6"
     },
     {
@@ -117,6 +145,8 @@
         "title": "QA",
         "lastName": "Arnold",
         "firstName": "Eula",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "fb476ea8-dc70-4e0b-97a9-56b6418d9493"
     },
     {
@@ -124,6 +154,8 @@
         "title": "Office Manager",
         "lastName": "Thomas",
         "firstName": "Herring",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "5471593b-5609-4641-8e4d-aa540edd09fa"
     },
     {
@@ -131,6 +163,8 @@
         "title": "Senior Developer",
         "lastName": "Molina",
         "firstName": "Huber",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "72296ff7-07ce-49b1-8ae9-8c04160e17c0"
     },
     {
@@ -138,6 +172,8 @@
         "title": "Developer",
         "lastName": "Clay",
         "firstName": "Levine",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "3200924f-1eb7-454f-994f-6fbde5866048"
     },
     {
@@ -145,6 +181,8 @@
         "title": "Developer",
         "lastName": "Fischer",
         "firstName": "Pugh",
+        "createdAt": "2017-11-13 10:23:54+02",
+        "updatedAt": "2017-11-13 10:23:54+02",
         "id": "8415e512-955e-4375-abdc-7e2b16b29e5d"
     }
 ]
