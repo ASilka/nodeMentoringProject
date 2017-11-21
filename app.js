@@ -9,13 +9,20 @@ const auth = require('basic-auth');
 const jwt = require('jsonwebtoken');
 const data = require('./data/employees.json');
 const tokens = require('./data/tokens.json');
-const Sequelize = require('sequelize');
+//const Sequelize = require('sequelize');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
 app.use(express.json());
 app.use(cookieParser());
+app.use('/', router);
+app.listen(3000);
 
+/*
 const sequalize = new Sequelize('postgres: //test:test@localhost:5432/nodejs')
-
 const dbUsers = sequalize.define('Users');
 const dbProducts = sequalize.define("Products");
 
@@ -27,15 +34,11 @@ sequalize
     .catch(err => {
         console.error('unable to connect: ', err);
     });
-
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-const TwitterStrategy = require('passport-twitter').Strategy;
-const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+*/
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 // simple basic authentification
 function basicAuth(req, res, next) {
     const credentials = auth(req);
@@ -119,6 +122,7 @@ function tokenVerification(req, res, next) {
         });
     }
 };
+
 //local authentication strategy with passport
 
 passport.use(new LocalStrategy({
@@ -199,8 +203,163 @@ passport.use('google', new GoogleStrategy({
 
 app.get('/auth/google', passport.authenticate('google'));
 
-//app.listen(3000);
+// establishing connection to mongo and test of connection 
 
+const mongoClient = require('mongodb').MongoClient,
+    assert = require('assert');
+
+const url = 'mongodb://localhost:27017/test';
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+
+mongoClient.connect(url, function (err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server");
+    //app.listen(3000);
+    //db.close();
+}
+);
+
+const dbMongoose = mongoose.connection;
+dbMongoose.on('error', console.error.bind(console, 'connection error: '));
+dbMongoose.once('once', function () {
+});
+
+// creating schemas for cities, users and products
+
+let citySchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    country: { type: String, required: true },
+    capital: { type: Boolean, required: true },
+    location: {
+        lat: Number,
+        long: Number
+    }
+});
+
+let userSchema = new mongoose.Schema({
+    isActive: Boolean,
+    title: { type: String, required: true },
+    lastName: { type: String, required: true },
+    firstName: { type: String, required: true },
+    userName: { type: String, required: true, unique: true, minlength: [2, "tooShort"] },
+    eMail: String,
+    createdAt: Date,
+    updatedAt: Date
+
+});
+
+let productSchema = new mongoose.Schema({
+    id: Number,
+    product: { type: String, required: true },
+    year: Number,
+    owner: String,
+    reviews: String
+});
+
+// creating models for city, user, product with validations
+
+const City = mongoose.model('City', citySchema);
+const User = mongoose.model('User', userSchema);
+const Product = mongoose.model('Product', productSchema);
+
+let productData = require('./data/products.json');
+let usersData = require('./data/employees.json');
+let cities = require('./data/cities.json');
+
+//create cities collection
+
+router.post('/AddCities', function (req, res) {
+    mongoClient.connect(url, function (err, db) {
+        db.collection('cities').insertMany(cities, function (err, data) {
+            console.log(data.ops);
+            assert.equal(null, err);
+            //assert.equal(5, data.insertedCount);
+            res.send(data);
+            db.close();
+        }
+        )
+    })
+});
+
+/*
+router.post('/AddUsers', function (req, res) {
+    mongoClient.connect(url, function (err, db) {
+        db.collection('users').insertMany(usersData, function (err, data) {
+            console.log(data.ops);
+            assert.equal(null, err);
+            //assert.equal(20, data.insertedCount);
+            res.send(data);
+            db.close();
+        }
+        )
+    })
+});
+*/
+
+//add users and products collections into db via mongoose 
+
+let object = {};
+
+router.post('/AddUsersMongoose', function (req, res) {
+    usersData.forEach(function (object) {
+        new User(object)
+            .save(function (error) {
+                console.log("user has been saved.");
+                if (error) {
+                    console.error(error);
+                }
+            });
+        res.send();
+    });
+});
+
+router.post('/AddProductsMongoose', function (req, res) {
+    productData.forEach(function (object) {
+        new Product(object)
+            .save(function (error) {
+                console.log("product has been saved.");
+                if (error) {
+                    console.error(error);
+                }
+            });
+        res.send();
+    });
+});
+
+//  return a random city on every request with mongoClient
+
+router.get('/randomCity', function (req, res) {
+    mongoClient.connect(url, function (err, db) {
+        db.collection('cities').count(function (err, count) {
+            db.collection('cities').distinct("_id", function (err, result) {
+                if (err)
+                    res.send(err)
+                var randomId = result[Math.floor(Math.random() * (count - 1))]
+                db.collection('cities').findOne({ _id: randomId }, function (err, result) {
+                    res.json(result);
+                    db.close();
+                })
+            })
+        })
+    })
+});
+
+//  return a random city on every request with mongoose
+
+router.get('/randomCityMongoose', function (req, res) {
+    City.count().exec(function (err, count) {
+        var random = Math.floor(Math.random() * count);
+        City.findOne().skip(random).exec(
+            function (err, result) {
+                res.json(result);
+            });
+    });
+
+});
+
+/*
 app.get('/user', function (req, res) {
     let parsedCookies = req.cookies;
     let parsedQuery = req.query;
@@ -211,64 +370,98 @@ app.get('/user', function (req, res) {
 })
 
 router.use(express.static(__dirname + "/public"));
+*/
+
+//Modify application to respond all routes from Homework 4 and return data from the database
 
 router.get("/api/products", tokenVerification, function (req, res) {
-    dbProducts.findAll()
-        .then(function (users) {
-            res.json(users);
-        });
+    Product.find({}, function (err, users) {
+        if (err) throw err;
+        res.json(users);
+    });
+});
+
+router.get("/api/cities", tokenVerification, function (req, res) {
+    City.find({}, function (err, users) {
+        if (err) throw err;
+        res.json(users);
+    });
 });
 
 router.get("/api/users", tokenVerification, function (req, res) {
-    dbUsers.findAll()
-        .then(function (users) {
-            res.json(users);
-        });
+    User.find({}, function (err, users) {
+        if (err) throw err;
+        res.json(users);
+    });
 });
 
 router.get("/api/products/:id", function (req, res) {
     let id = req.params.id;
-    dbProducts.findOne({
-        where: {
-            id: id
-        }
-    }
-        .then(product => {
-            res.json(product)
-        }))
+    Product.find({ id: id }, function (err, product) {
+        if (err) throw err;
+        res.json(product);
+    });
 });
 
 router.get("/api/products/:id/reviews", function (req, res) {
-
     let id = req.params.id;
-    dbProducts.findOne({
-        where: {
-            id: id
-        },
-        attributes: ['id', 'reviews']
-    }
-        .then(product => {
-            res.json(product)
-        }))
+    Product.find({ id: id }, 'reviews', function (err, product) {
+        if (err) throw err;
+        res.json(product);
+    });
 });
 
-router.post("/api/products", bodyParser, function (req, res, next) {
-    if (!req.query.product) res.sendStatus(400);
-    else next();
-}, function (req, res, next) {
-    let product = req.query.product;
-    let year = req.body.year;
-    let owner = req.body.owner;
-    dbProducts.create({
-        product: product,
-        year: year,
-        owner: owner
-    })
-        .then(function (product) {
+router.post("/api/products", bodyParser, function (req, res) {
+    if (!req.query.product) { res.sendStatus(400) }
+    else (
+        Product.create({ product: req.query.product, year: req.body.year, owner: req.body.owner, lastModifiedDate: new Date() }, function (err, product) {
+            mongoose.disconnect();
+            if (err) return console.log(err);
             res.json(product);
-        });
+        }));
 });
 
-app.use('/', router);
+router.post("/api/cities", bodyParser, function (req, res) {
+    if (!req.query.city) { res.sendStatus(400) }
+    else (
+        City.create({ name: req.query.city, country: req.body.country, capital: req.body.capital, lastModifiedDate: new Date() }, function (err, city) {
+            if (err) return console.log(err);
+            res.json(city);
+        }));
+});
+
+router.put("/api/cities/:id", bodyParser, function (req, res) {
+    let id = req.params.id;
+    if (!req.query.id) { res.sendStatus(400) }
+    else (
+        City.update({ _id: req.query.id }, { _id: req.body.id, name: req.body.name, capital: req.body.capital, lastModifiedDate: new Date() }, function (err, res) {
+            if (err) return console.log(err);
+            res.json(res);
+        }));
+});
+
+router.delete("/api/users/:id", bodyParser, function (req, res) {
+    let id = req.params.id;
+    User.findOneAndRemove({ _id: id }, function (err, doc) {
+        if (err) throw err;
+        res.json("user with id" + id + " has been deleted");
+    });
+});
+
+router.delete("/api/products/:id", bodyParser, function (req, res) {
+    let id = req.params.id;
+    Product.findOneAndRemove({ id: id }, function (err, doc) {
+        if (err) throw err;
+        res.json("product with id" + id + " has been deleted");
+    });
+});
+
+router.delete("/api/cities/:id", bodyParser, function (req, res) {
+    let id = req.params.id;
+    City.findOneAndRemove({ id: id }, function (err, doc) {
+        if (err) throw err;
+        res.json("city with id" + id + " has been deleted");
+    });
+});
 
 module.exports = app;
