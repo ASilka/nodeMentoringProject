@@ -19,7 +19,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 app.use(express.json());
 app.use(cookieParser());
 app.use('/', router);
-app.listen(3000);
+//app.listen(3000);
 
 /*
 const sequalize = new Sequelize('postgres: //test:test@localhost:5432/nodejs')
