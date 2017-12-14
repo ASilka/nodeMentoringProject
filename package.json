@@ -12,6 +12,8 @@
     "testPlainServer": "nodemon -r babel-register ./http-servers/plain-text-server.js",
     "testJsonServer": "nodemon -r babel-register ./http-servers/json-server.js",
     "testHtmlServer": "nodemon -r babel-register ./http-servers/html-server.js",
+    "startSwaggerApp": "swagger project start",
+    "editSwaggerApp": "swagger project edit",
     "testEchoServer": "nodemon -r babel-register ./http-servers/echo-server.js"
   },
   "author": {

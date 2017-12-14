@@ -1,0 +1,248 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: Node mentoring app
+host: 'localhost:10010'
+basePath: /
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/products:
+    x-swagger-router-controller: app
+    get:
+      description: Return a products list
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      description: Add a new product
+      parameters:
+      - in: body
+        name: body
+        description: product and it's properties
+        required: true
+        schema:
+          $ref: '#/definitions/Product'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/GeneralResponse'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /api/users:
+    x-swagger-router-controller: app
+    get:
+      description: Return a users list
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /api/cities:
+    x-swagger-router-controller: app
+    get:
+      description: Return a cities list
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/City'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    post:
+      description: Add a new city
+      parameters:
+      - in: body
+        name: body
+        description: city and it's properties
+        required: true
+        schema:
+          $ref: '#/definitions/City'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/GeneralResponse'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /api/products/{id}:
+    x-swagger-router-controller: app
+    get:
+      description: Return product by id
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Product'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    delete:
+      description: Delete a product by ID
+      parameters:
+        - name: id
+          description: product id
+          type: string
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/GeneralResponse'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /api/products/{id}/reviews:
+    x-swagger-router-controller: app
+    get:
+      description: Return product review by id
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ProductReviews'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /api/cities/{id}:
+    x-swagger-router-controller: app
+    put:
+      description: Update a city
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+        - name: body
+          in: body
+          description: product and it's properties
+          required: true
+          schema:
+            $ref: '#/definitions/City'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/GeneralResponse'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    delete:
+      description: Delete a city by ID
+      parameters:
+        - name: id
+          description: city id
+          type: string
+          in: path
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/GeneralResponse'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /swagger:
+    x-swagger-pipe: swagger_raw
+definitions:
+  Product:
+    properties:
+      id:
+        type: integer
+      product:
+        type: string
+      year:
+        type: integer
+      owner:
+        type: string
+      reviews:
+        type: string
+  ProductReviews:
+    properties:
+      reviews:
+        type: string
+  User:
+    properties:
+      id:
+        type: integer
+      isActive:
+        type: boolean
+      title:
+        type: string
+      lastName:
+        type: string
+      firstName:
+        type: string
+      userName:
+        type: string
+      eMail:
+        type: string
+  City:
+    properties:
+      id:
+        type: integer
+      name:
+        type: boolean
+      country:
+        type: string
+      capital:
+        type: string
+      location:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  GeneralResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
